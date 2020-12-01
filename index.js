@@ -7,6 +7,7 @@ const app = express();
 const cors = require('cors');
 const morgan = require('morgan');
 const port = process.env.PORT;
+const datbase = require('./database')
 
 //middleware
 app.use(cors());
@@ -24,3 +25,5 @@ app.get('/', (req,res) =>{
 app.listen(port, () => {
     console.log(`Server is running port : ${port}`)
 })
+
+
