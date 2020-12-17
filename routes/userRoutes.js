@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const { check , validationResult, body } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const moment = require('moment');
-const User = require('./../models/User')
+const User = require('../models/User')
 const token_key = process.env.TOKEN_KEY
 
 
@@ -23,6 +23,7 @@ router.get('/',(req,res) => {
         'message':"User default route"
     })
 })
+
 
 
 //user register route
@@ -47,10 +48,15 @@ router.post('/register',[
             })
         }
 
+        const salt = bcrypt.genSaltSync(10)
+        const hashPassword = bcrypt.hashSync(req.body.password, salt);
+
+
         return res.status(200).json({
             'status':true,
             'message':"success",
-            "data": req.body
+            "data": req.body,
+            "hashedPassword":hashPassword
         })
 
 })
