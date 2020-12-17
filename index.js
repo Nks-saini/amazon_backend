@@ -14,7 +14,6 @@ const datbase = require('./database')
 const userRoutes = require('./routes/userRoutes')
 
 
-
 //middleware
 app.use(cors());
 app.use(morgan('dev'));
